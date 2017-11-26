@@ -13,7 +13,7 @@ rule train_model:
     input:
         data_file = config['training']['data_file']
     output:
-        results = MODEL_DIR + '/results.json'
+        results = MODEL_DIR + '/result.json'
     params:
         num_epochs = config['training']['num_epochs'],
         model_dir = MODEL_DIR
@@ -38,18 +38,18 @@ rule sample_text:
         out_length = config['sampling']['out_length'],
         num_samples = config['sampling']['num_samples'],
         start_texts = config['sampling']['start_texts'],
-        model_dir = MODEL_DIR
+        model_dir = MODEL_DIR,
+        base_cmd = ('{VENV2} python tensorflow-char-rnn/sample.py '
+        '--init-dir {rules.train_model.input.output_dir} '
+        '--temperature {wildcards.temperature} '
+        '--length {params.out_length} ')
     run:
         # Create samples directory if it doesn't exist
         shell('mkdir -p {params.model_dir}/samples')
         sep = '----------------------'
         # Supply the base command so that samples are easy to get post hoc
-        base_cmd = ('{VENV2} python tensorflow-char-rnn/sample.py '
-        '--init-dir {rules.train_model.input.output_dir} '
-        '--temperature {wildcards.temperature} '
-        '--length {params.out_length} '
-        '--start-text {wildcards.start_text} ')
-        shell('echo "Base command: {base_cmd}\n{sep}" > {output.sample_txt}')
+        
+        shell('echo "Base command: {params.base_cmd}\n{sep}" > {output.sample_txt}')
         for start_text in params.start_texts:
             shell('echo "STARTING TEXT: {start_text}\n{sep}" >> {output.sample_txt}')
             for samp_num in range(params.num_samples):
@@ -58,7 +58,7 @@ rule sample_text:
                 '--init-dir {params.model_dir} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '
-                '--start-text {wildcards.start_text} '
+                '--start-text {start_text} '
                 '>> {output.sample_txt}'))
                 shell('echo "{sep}" >> {output.sample_txt}')
 

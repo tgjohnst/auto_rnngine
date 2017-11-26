@@ -87,7 +87,7 @@ rule sample_text:
 #TODO write a json2html output CSS to render more prettily
 #  this can come after the basic transform is complete.
     
-model_targets = expand(str(rules.sample_text.output.sample_text),
+model_targets = expand(str(rules.sample_text.output.sample_txt),
                        # training config
                        data_file=config['training']['data_file'],
                        data_name=config['training']['data_name'],

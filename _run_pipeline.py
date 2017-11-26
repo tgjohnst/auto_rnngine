@@ -65,7 +65,7 @@ def run_snakemake(opts, additional_args):
     snake_cmd += '--rerun-incomplete ' # Re-run all jobs the output of which is recognized as incomplete.
     snake_cmd += '--reason ' # Print the reason for each executed rule.
     snake_cmd += ''.join(['{} '.format(arg) for arg in additional_args])
-    snake_cmd += '--target {}'.format(' '.join(opts.targets))
+#    snake_cmd += '-- {}'.format(' '.join(opts.targets))
 
     git_hash = check_output('git rev-parse HEAD', shell=True)
     git_branch = check_output('git rev-parse --abbrev-ref HEAD', shell=True)

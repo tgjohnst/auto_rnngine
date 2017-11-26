@@ -1,11 +1,10 @@
-# todo add snakemake to python / env.
+#!/usr/bin/env python
 
 MODEL_DIR = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_lr{wildcards.learn_rate}'
 
 # globally define VENV2 param
 # TODO need to locate environment and activation
-globals()['VENV2'] = 'source activate {env} &&'
-                    .format(env='tensorflow_p27') # hardcoding for now
+globals()['VENV2'] = 'source activate {env} &&'.format(env='tensorflow_p27') # hardcoding for now
 
 rule train_model:
 #    input:
@@ -41,22 +40,22 @@ rule sample_text:
         shell('mkdir -p {MODEL_DIR}/samples')
         sep = '----------------------'
         # Supply the base command so that samples are easy to get post hoc
-        base_cmd = '{VENV2} python sample.py ' +
-        '--init-dir {rules.train_model.input.output_dir} ' +
-        '--temperature {wildcards.temperature} ' +
-        '--length {params.out_length} ' +
-        '--start-text {wildcards.start_text} '
+        base_cmd = ('{VENV2} python sample.py '
+        '--init-dir {rules.train_model.input.output_dir} '
+        '--temperature {wildcards.temperature} '
+        '--length {params.out_length} '
+        '--start-text {wildcards.start_text} ')
         shell('echo "Base command: {base_cmd}\n{sep}" > {output.sample_text}')
         for start_text in params.start_texts:
             shell('echo "STARTING TEXT: {start_text}\n{sep}" >> {output.sample_text}')
             for samp_num in range(params.num_samples):
                 shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_text}')
-                shell('{VENV2} python sample.py ' +
-                '--init-dir {rules.train_model.input.output_dir} ' +
-                '--temperature {wildcards.temperature} ' +
-                '--length {params.out_length} ' +
-                '--start-text {wildcards.start_text} ' +
-                '>> {output.}')
+                shell(('{VENV2} python sample.py '
+                '--init-dir {rules.train_model.input.output_dir} '
+                '--temperature {wildcards.temperature} '
+                '--length {params.out_length} '
+                '--start-text {wildcards.start_text} '
+                '>> {output.}'))
                 shell('echo "{sep}" >> {output.sample_text}')
 
         

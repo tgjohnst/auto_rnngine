@@ -1,14 +1,11 @@
 training:
-    data_name: 'shakespeare'
-    data_file: 'shakespeare.txt'
+    data_name: 'training_data'
+    data_file: 'data/tiny_shakespeare.txt'
     model_type: 'lstm'
     hidden_sizes:
         - 128
-        - 256
-        - 384
     num_layers:
         - 2
-        - 3
     num_unrollings: 10
     num_epochs: 12
     learn_rate: 0.002

@@ -1,6 +1,4 @@
 training:
-    data_name: 'training_data'
-    data_file: 'data/tiny_shakespeare.txt'
     model_type: 'lstm'
     hidden_sizes:
         - 128

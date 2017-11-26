@@ -1,7 +1,7 @@
 import yaml
 import json
 import collections
-from os.path import join
+from os.path import join, basename, dirname
 
 # Check that a configuration file was provided
 if not config:

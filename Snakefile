@@ -45,13 +45,13 @@ onstart:
             print(log_string, file=outh)
 
 # Clean up activated environments when finished
-onsuccess:
-    shell("source deactivate")
-    print("Workflow finished successfully!")
+# onsuccess:
+    # shell("source deactivate")
+    # print("Workflow finished successfully!")
 
-onerror:
-    shell("source deactivate")
-    print("An error occurred")
+# onerror:
+    # shell("source deactivate")
+    # print("An error occurred")
             
 # ############################
             

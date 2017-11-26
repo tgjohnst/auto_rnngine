@@ -49,7 +49,7 @@ rule sample_text:
             for samp_num in range(params.num_samples):
                 shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_text}')
                 shell(('{VENV2} python sample.py '
-                '--init-dir {rules.train_model.input.output_dir} '
+                '--init-dir {MODEL_DIR_WC} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '
                 '--start-text {wildcards.start_text} '

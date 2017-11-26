@@ -49,7 +49,7 @@ onstart:
             
             
 # Define workflow targets    
-model_targets = expand(str(rules.sample_text.output.SOMETHING),
+model_targets = expand(str(rules.sample_text.output.sample_txt),
                        # training config
                        data_file=config['training']['data_file'],
                        data_name=config['training']['data_name'],

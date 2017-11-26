@@ -28,7 +28,7 @@ rule sample_text:
     input:
         sentinel = rules.train_model.output.finished
     output:
-        sample_text = MODEL_DIR + '/samples/samples_temp{temperature}.txt'
+        sample_txt = MODEL_DIR + '/samples/samples_temp{temperature}.txt'
     params:
         out_length=config['sampling']['out_length'],
         num_samples=config['sampling']['num_samples'],
@@ -43,18 +43,18 @@ rule sample_text:
         '--temperature {wildcards.temperature} '
         '--length {params.out_length} '
         '--start-text {wildcards.start_text} ')
-        shell('echo "Base command: {base_cmd}\n{sep}" > {output.sample_text}')
+        shell('echo "Base command: {base_cmd}\n{sep}" > {output.sample_txt}')
         for start_text in params.start_texts:
-            shell('echo "STARTING TEXT: {start_text}\n{sep}" >> {output.sample_text}')
+            shell('echo "STARTING TEXT: {start_text}\n{sep}" >> {output.sample_txt}')
             for samp_num in range(params.num_samples):
-                shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_text}')
+                shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_txt}')
                 shell(('{VENV2} python sample.py '
                 '--init-dir {MODEL_DIR_WC} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '
                 '--start-text {wildcards.start_text} '
-                '>> {output.}'))
-                shell('echo "{sep}" >> {output.sample_text}')
+                '>> {output.sample_txt}'))
+                shell('echo "{sep}" >> {output.sample_txt}')
 
         
 # rule compile_model_report_json:

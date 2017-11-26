@@ -16,7 +16,7 @@ rule train_model:
     params:
         num_epochs = config['training']['num_epochs']
     shell:
-        '{VENV2} python train.py '
+        '{VENV2} python tensorflow-char-rnn/train.py '
         '--data-file {input.data_file} '
         '--output-dir {MODEL_DIR_WC} '
         '--hidden-size {wildcards.hidden_size} '
@@ -40,7 +40,7 @@ rule sample_text:
         shell('mkdir -p {MODEL_DIR_WC}/samples')
         sep = '----------------------'
         # Supply the base command so that samples are easy to get post hoc
-        base_cmd = ('{VENV2} python sample.py '
+        base_cmd = ('{VENV2} python tensorflow-char-rnn/sample.py '
         '--init-dir {rules.train_model.input.output_dir} '
         '--temperature {wildcards.temperature} '
         '--length {params.out_length} '

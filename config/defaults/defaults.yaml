@@ -23,6 +23,7 @@ sampling:
     start_texts:
         - "This is "
         - "Number 1 "
+    num_samples: 1
 
 reporting:
     data_preview_len: 500

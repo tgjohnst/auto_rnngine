@@ -12,4 +12,4 @@ Snakemake-driven pipeline for creating generative text models with tensorflow-ch
 - run the pipeline with ./run_pipeline.sh config/config_file.yaml
 - enjoy your robo-babble
 
-This is a personal project at the moment but please let me know if you have any ideas or needs!
+This is a personal project at the moment, documentation will be updated once it is in working condition, but please let me know if you have any ideas or needs!

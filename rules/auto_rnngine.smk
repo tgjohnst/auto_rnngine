@@ -39,7 +39,7 @@ rule sample_text:
         num_samples = config['sampling']['num_samples'],
         start_texts = config['sampling']['start_texts'],
         model_dir = MODEL_DIR,
-        base_cmd = ('{VENV2} python tensorflow-char-rnn/sample.py '
+        base_cmd = ('python tensorflow-char-rnn/sample.py '
         '--init-dir {rules.train_model.input.output_dir} '
         '--temperature {wildcards.temperature} '
         '--length {params.out_length} ')
@@ -54,7 +54,7 @@ rule sample_text:
             shell('echo "STARTING TEXT: {start_text}\n{sep}" >> {output.sample_txt}')
             for samp_num in range(params.num_samples):
                 shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_txt}')
-                shell(('{VENV2} python sample.py '
+                shell(('{VENV2} python tensorflow-char-rnn/sample.py '
                 '--init-dir {params.model_dir} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '

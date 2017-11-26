@@ -61,7 +61,7 @@ def run_snakemake(opts, additional_args):
     snake_cmd += '--configfile {} '.format(opts.configfile[0])
 #   snake_cmd += '-j 1 '.format(threads) # Use at most N cores in parallel (default: 1). If N is omitted, the limit is set to the number of available cores.
     snake_cmd += '-w 60 ' # Wait up to 60 seconds for output files
-	snake_cmd += '--printshellcmds ' # Print out shell commands that will be executed
+    snake_cmd += '--printshellcmds ' # Print out shell commands that will be executed
     snake_cmd += '--rerun-incomplete ' # Re-run all jobs the output of which is recognized as incomplete.
     snake_cmd += '--reason ' # Print the reason for each executed rule.
     snake_cmd += ''.join(['{} '.format(arg) for arg in additional_args])

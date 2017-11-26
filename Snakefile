@@ -38,11 +38,11 @@ onstart:
         with open(logfile, 'w') as outh:
             print(log_string, file=outh)
 
-			
+            
 # ############################
-			
-			
-# Define workflow targets	
+            
+            
+# Define workflow targets    
 model_targets = expand(str(rules.sample_text.output.SOMETHING),
                        # training config
                        data_file=config['training']['data_file'],
@@ -52,7 +52,7 @@ model_targets = expand(str(rules.sample_text.output.SOMETHING),
                        num_epochs=config['training']['num_epochs'],
                        learn_rate=config['training']['learn_rate'],
                        num_unrollings=config['training']['num_unrollings'],
-					   model_type=config['training']['model_type'],
+                       model_type=config['training']['model_type'],
                        # sampling config
                        temperature=config['sampling']['temperatures'])
     
@@ -60,4 +60,4 @@ rule all:
     input: model_targets
 
 # End of snakefile
-	
+    

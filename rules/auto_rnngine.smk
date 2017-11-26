@@ -15,6 +15,7 @@ rule train_model:
         num_epochs = config['training']['num_epochs'],
         model_dir = MODEL_DIR
     shell:
+        'mkdir -p models/ &&'
         '{VENV2} python tensorflow-char-rnn/train.py '
         '--data-file {input.data_file} '
         '--output-dir {params.model_dir} '

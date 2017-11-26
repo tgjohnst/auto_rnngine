@@ -57,6 +57,7 @@ def run_snakemake(opts, additional_args):
 
     snake_cmd = 'snakemake '
     snake_cmd += '--keep-going ' # Continue with independent tasks if a task fails
+    snake_cmd += '--config '
     snake_cmd += '"run_number={}" '.format(run_number)
     snake_cmd += '--configfile {} '.format(opts.configfile[0])
 #   snake_cmd += '-j 1 '.format(threads) # Use at most N cores in parallel (default: 1). If N is omitted, the limit is set to the number of available cores.

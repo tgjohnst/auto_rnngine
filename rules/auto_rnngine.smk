@@ -8,19 +8,21 @@ MODEL_DIR_WC = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards
 globals()['VENV2'] = 'source activate {env} &&'.format(env='tensorflow_p27') # hardcoding for now
 
 rule train_model:
-#    input:
-#        data_file = '{data_file}'
+    input:
+        data_file = config['training']['data_file']
     output:
         finished = MODEL_DIR + '/completion_sentinel',
         results = MODEL_DIR + '/results.json'
+    params:
+        num_epochs = config['training']['num_epochs']
     shell:
         '{VENV2} python train.py '
-        '--data-file {wildcards.data_file} '
+        '--data-file {input.data_file} '
         '--output-dir {MODEL_DIR_WC} '
         '--hidden-size {wildcards.hidden_size} '
         '--num-layers {wildcards.num_layers} '
         '--num-unrollings {wildcards.num_unrollings} '
-        '--num-epochs {wildcards.num_epochs} '
+        '--num-epochs {params.num_epochs} '
         '--learning-rate {wildcards.learn_rate} '
         '&& touch {output.finished}' # touch a sentinel file to indicate completion
 

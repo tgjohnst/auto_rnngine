@@ -86,19 +86,3 @@ rule sample_text:
 #TODO write a json2html transform function!
 #TODO write a json2html output CSS to render more prettily
 #  this can come after the basic transform is complete.
-    
-model_targets = expand(str(rules.sample_text.output.sample_txt),
-                       # training config
-                       data_file=config['training']['data_file'],
-                       data_name=config['training']['data_name'],
-                       model_type=config['training']['model_type'],
-                       hidden_size=config['training']['hidden_sizes'],
-                       num_layers=config['training']['num_layers'],
-                       num_epochs=config['training']['num_epochs'],
-                       learn_rate=config['training']['learn_rate'],
-                       num_unrollings=config['training']['num_unrollings'],
-                       # sampling config
-                       temperature=config['sampling']['temperatures'])
-    
-rule all:
-    input: model_targets

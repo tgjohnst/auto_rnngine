@@ -1,0 +1,31 @@
+training:
+    data_name: 'shakespeare'
+    data_file: 'shakespeare.txt'
+    hidden_sizes:
+        - 128
+        - 256
+        - 384
+    num_layers:
+        - 2
+        - 3
+    num_unrollings: 10
+    num_epochs: 12
+    
+    learn_rate: 0.002
+    
+sampling:
+    out_length: 250
+    temperatures:
+        - 0.4
+        - 0.5
+        - 0.6
+        - 0.7
+        - 0.8
+        - 0.9
+        - 1
+    start_texts:
+        - "This is "
+        - "Number 1 "
+
+reporting:
+    data_preview_len: 500

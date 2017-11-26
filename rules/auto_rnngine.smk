@@ -4,9 +4,8 @@ MODEL_DIR = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hi
 
 # globally define VENV2 param
 # TODO need to locate environment and activation
-globals()[param] = ('source {activate} {env} &&'
-                    .format(activate=srcdir('../env/lib/miniconda3/bin/activate'),
-                        env=env))
+globals()['VENV2'] = 'source activate {env} &&'
+                    .format(env='tensorflow_p27') # hardcoding for now
 
 rule train_model:
     input:
@@ -60,30 +59,30 @@ rule sample_text:
 				shell('echo "{sep}" >> {output.sample_text}')
 
         
-rule compile_model_report_json:
-    input:
-        rules.sample_text.output.log # TODO
-    output:
-        report = #REPORTOUT TODO
+# rule compile_model_report_json:
+    # input:
+        # rules.sample_text.output.log # TODO
+    # output:
+        # report = #REPORTOUT TODO
 
-rule compile_meta_report_json:
-    input:
-        data_file = 'data/{data_file}',
-        data_chars_to_display = config['reporting']['data_preview_len']
-        #TODO config file path? how do we go get it?
+# rule compile_meta_report_json:
+    # input:
+        # data_file = 'data/{data_file}',
+        # data_chars_to_display = config['reporting']['data_preview_len']
+        # #TODO config file path? how do we go get it?
         
-    output:
+    # output:
         
-    run:
+    # run:
         
-#TODO create per-model report template JSON
+  # #TODO create per-model report template JSON
 
-rule assemble_reports:
-    input:
-        meta_report = rules.compile_meta_report_json.output
-        model_reports = expand(rules.compile_model_report_json.output.____ #TODO
-    output:
-        compiled_reports = #TODO
+# rule assemble_reports:
+    # input:
+        # meta_report = rules.compile_meta_report_json.output
+        # model_reports = expand(rules.compile_model_report_json.output.____ #TODO
+    # output:
+        # compiled_reports = #TODO
         
 #compile into a big old json! 
 #TODO write a json2html transform function!

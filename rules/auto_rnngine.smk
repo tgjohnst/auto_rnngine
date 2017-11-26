@@ -10,7 +10,6 @@ rule train_model:
     input:
         data_file = config['training']['data_file']
     output:
-        finished = MODEL_DIR + '/completion_sentinel',
         results = MODEL_DIR + '/results.json'
     params:
         num_epochs = config['training']['num_epochs'],
@@ -24,11 +23,10 @@ rule train_model:
         '--num-unrollings {wildcards.num_unrollings} '
         '--num-epochs {params.num_epochs} '
         '--learning-rate {wildcards.learn_rate} '
-        '&& touch {output.finished}' # touch a sentinel file to indicate completion
 
 rule sample_text:
     input:
-        sentinel = rules.train_model.output.finished
+        sentinel = rules.train_model.output.results
     output:
         sample_txt = MODEL_DIR + '/samples/samples_temp{temperature}.txt'
     params:

@@ -12,12 +12,9 @@ rule train_model:
     output:
         finished = MODEL_DIR + '/completion_sentinel',
         results = MODEL_DIR + '/results.json'
-        # TODO how do we extract dir from this?
-    params:
-        data_file = wildcards.data_file # this should be an input?
     shell:
         '{VENV2} python train.py '
-        '--data-file {input.data_file} '
+        '--data-file {wildcards.data_file} '
         '--output-dir models/{wildcards.data_name}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_nu{wildcards.num_unrollings}_lr{wildcards.learn_rate}/ '
         '--hidden-size {wildcards.hidden_size} '
         '--num-layers {wildcards.num_layers} '

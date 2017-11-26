@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-MODEL_DIR = 'models/{data_name}_{model_type}_hs{hidden_size}_nl{num_layers}_lr{learn_rate}'
-MODEL_DIR_WC = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_lr{wildcards.learn_rate}'
+MODEL_DIR = 'models/{data_name}_{model_type}_hs{hidden_size}_nl{num_layers}_nu{num_unrollings}_lr{learn_rate}'
+MODEL_DIR_WC = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_nu{wildcards.num_unrollings}_lr{wildcards.learn_rate}'
 
 # globally define VENV2 param
 # TODO need to locate environment and activation

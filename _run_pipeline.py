@@ -67,8 +67,8 @@ def run_snakemake(opts, additional_args):
     snake_cmd += ''.join(['{} '.format(arg) for arg in additional_args])
     snake_cmd += '-- {}'.format(' '.join(opts.targets))
 
-    git_hash = check_output('git rev-parse HEAD')
-    git_branch = check_output('git rev-parse --abbrev-ref HEAD')
+    git_hash = check_output('git rev-parse HEAD', shell=True)
+    git_branch = check_output('git rev-parse --abbrev-ref HEAD', shell=True)
 
     with open(stderr_master_logfile, 'w') as f:
         print('Executing Snakemake workflow... {}'.format(snake_cmd), file=f)

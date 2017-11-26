@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import yaml
 import json
 import collections
@@ -21,6 +23,10 @@ def update(d, u):
 
 # Add any defaults that were not provided with config yaml
 config = update(_default_config, config)
+
+# Drop out if a data file was not provided for training
+if "data_file" not in config['training'] :
+    raise WorkflowError('No data file (traning: data_file) was provided, exiting.')
 
 # Include rules file(s)
 include: srcdir('rules/auto_rnngine.smk')

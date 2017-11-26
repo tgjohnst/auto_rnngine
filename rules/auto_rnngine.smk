@@ -8,13 +8,14 @@ globals()['VENV2'] = 'source activate {env} &&'
                     .format(env='tensorflow_p27') # hardcoding for now
 
 rule train_model:
-    input:
-        data_file = 'data/{data_file}'
+#    input:
+#        data_file = '{data_file}'
     output:
         finished = MODEL_DIR + '/completion_sentinel',
         results = MODEL_DIR + '/results.json'
         # TODO how do we extract dir from this?
     params:
+        data_file = wildcards.data_file # this should be an input?
     shell:
         '{VENV2} python train.py '
         '--data-file {input.data_file} '

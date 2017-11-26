@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 MODEL_DIR = 'models/{data_name}_{model_type}_hs{hidden_size}_nl{num_layers}_nu{num_unrollings}_lr{learn_rate}'
-MODEL_DIR_WC = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_nu{wildcards.num_unrollings}_lr{wildcards.learn_rate}'
 
 # globally define VENV2 param
 # TODO need to locate environment and activation
@@ -14,11 +13,12 @@ rule train_model:
         finished = MODEL_DIR + '/completion_sentinel',
         results = MODEL_DIR + '/results.json'
     params:
-        num_epochs = config['training']['num_epochs']
+        num_epochs = config['training']['num_epochs'],
+        model_dir = MODEL_DIR
     shell:
         '{VENV2} python tensorflow-char-rnn/train.py '
         '--data-file {input.data_file} '
-        '--output-dir {MODEL_DIR_WC} '
+        '--output-dir {params.model_dir} '
         '--hidden-size {wildcards.hidden_size} '
         '--num-layers {wildcards.num_layers} '
         '--num-unrollings {wildcards.num_unrollings} '
@@ -32,12 +32,13 @@ rule sample_text:
     output:
         sample_txt = MODEL_DIR + '/samples/samples_temp{temperature}.txt'
     params:
-        out_length=config['sampling']['out_length'],
-        num_samples=config['sampling']['num_samples'],
-        start_texts=config['sampling']['start_texts']
+        out_length = config['sampling']['out_length'],
+        num_samples = config['sampling']['num_samples'],
+        start_texts = config['sampling']['start_texts'],
+        model_dir = MODEL_DIR
     run:
         # Create samples directory if it doesn't exist
-        shell('mkdir -p {MODEL_DIR_WC}/samples')
+        shell('mkdir -p {params.model_dir}/samples')
         sep = '----------------------'
         # Supply the base command so that samples are easy to get post hoc
         base_cmd = ('{VENV2} python tensorflow-char-rnn/sample.py '
@@ -51,7 +52,7 @@ rule sample_text:
             for samp_num in range(params.num_samples):
                 shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_txt}')
                 shell(('{VENV2} python sample.py '
-                '--init-dir {MODEL_DIR_WC} '
+                '--init-dir {params.model_dir} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '
                 '--start-text {wildcards.start_text} '

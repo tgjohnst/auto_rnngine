@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-MODEL_DIR = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_lr{wildcards.learn_rate}'
+MODEL_DIR = 'models/{data_name}_{model_type}_hs{hidden_size}_nl{num_layers}_lr{learn_rate}'
+MODEL_DIR_WC = 'models/{wildcards.data_name}_{wildcards.model_type}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_lr{wildcards.learn_rate}'
 
 # globally define VENV2 param
 # TODO need to locate environment and activation
@@ -15,7 +16,7 @@ rule train_model:
     shell:
         '{VENV2} python train.py '
         '--data-file {wildcards.data_file} '
-        '--output-dir models/{wildcards.data_name}_hs{wildcards.hidden_size}_nl{wildcards.num_layers}_nu{wildcards.num_unrollings}_lr{wildcards.learn_rate}/ '
+        '--output-dir {MODEL_DIR_WC} '
         '--hidden-size {wildcards.hidden_size} '
         '--num-layers {wildcards.num_layers} '
         '--num-unrollings {wildcards.num_unrollings} '
@@ -34,7 +35,7 @@ rule sample_text:
         start_texts=config['sampling']['start_texts']
     run:
         # Create samples directory if it doesn't exist
-        shell('mkdir -p {MODEL_DIR}/samples')
+        shell('mkdir -p {MODEL_DIR_WC}/samples')
         sep = '----------------------'
         # Supply the base command so that samples are easy to get post hoc
         base_cmd = ('{VENV2} python sample.py '

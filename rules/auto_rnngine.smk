@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# Note that conda will break when doing source activate / source deactivate
+#  in versions 4.3.x. fix: https://github.com/conda/conda/pull/5407
+
 MODEL_DIR = 'models/{data_name}_{model_type}_hs{hidden_size}_nl{num_layers}_nu{num_unrollings}_lr{learn_rate}'
 
 # globally define VENV2 param

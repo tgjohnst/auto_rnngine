@@ -58,7 +58,7 @@ rule sample_text:
                 '--init-dir {params.model_dir} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '
-                '--start-text {start_text} '
+                '--start-text "{start_text}" '
                 '>> {output.sample_txt}'))
                 shell('echo "{sep}" >> {output.sample_txt}')
 

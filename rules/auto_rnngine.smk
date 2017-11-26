@@ -24,6 +24,7 @@ rule train_model:
         '--num-unrollings {wildcards.num_unrollings} '
         '--num-epochs {params.num_epochs} '
         '--learning-rate {wildcards.learn_rate} '
+        '--log-to-file'
 
 rule sample_text:
     input:

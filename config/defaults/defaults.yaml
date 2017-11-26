@@ -1,6 +1,7 @@
 training:
     data_name: 'shakespeare'
     data_file: 'shakespeare.txt'
+    model_type: 'lstm'
     hidden_sizes:
         - 128
         - 256
@@ -10,7 +11,6 @@ training:
         - 3
     num_unrollings: 10
     num_epochs: 12
-    
     learn_rate: 0.002
     
 sampling:

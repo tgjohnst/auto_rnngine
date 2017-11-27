@@ -1,4 +1,6 @@
-# auto_rnngine
+# Auto_RNNGine - Automatic RNN training and sampling engine for text synthesis
+Author: Timothy Johnstone, 2017
+
 Snakemake-driven pipeline for creating generative text models with tensorflow-char-rnn. Produces nice reports comparing models with various parameters.
 
 # Recommended environment setup (more detailed instructions and non-EC2 instructions to come)
@@ -8,7 +10,7 @@ As of 11/26/17:
 
 EC2 g2.2xlarge range between 0.25 and 0.80 USD per hour, giving you access to 1 K520 GRID GPU with 4GB GPU memory. This is quite a bit slower than google's offering, but the AWS deep learning AMI does make things easier for beginners as everything is preinstalled and configured.
 
-Google Compute just lowered GPU prices, they charge $0.45 for each K80 GPU attached to an instance. K80s have about 4x the compute cores (4992) and 4x the memory (24GB) as the K520, thoguh note that if you attach a single K80 GPU via google compute cloud, it's half this since the boards themselves are dual-core. Cost/performance-wise, it's pretty much a no-brainer to use google if possible.
+Google Compute just lowered GPU prices, they charge $0.45 for each K80 GPU attached to an instance. K80s have about 2x the compute cores (2,496) and 2x the memory (12GB) as the K520 GRID used on AWS. Cost/performance-wise, it's pretty much a no-brainer to use google if you're willing to do a bit more setup.
 
 *If you are computing on the cloud, remember to stop your instances when you're not working with them or you'll rack up costs.*
 
@@ -30,14 +32,18 @@ Coming soon
 - run the pipeline with ./run_pipeline.sh config/config_file.yaml
 - enjoy your robo-babble
 
+## Monitoring the pipeline
+TODO - readme about monitoring the pipeline using the included logs as well as tensorboard
+
 This is a personal project at the moment, documentation will be updated once it is in working condition, but please let me know if you have any ideas or needs!
 
 # Status:
 - ~~Snakemake pipeline framework complete with standard YAML format~~
 - ~~Training runs successfully on EC2~~
 - ~~Sampling runs successfully on EC2~~
+- Enable restarting half-finished trainings during training rule if previous run is detected (sentinel)
 - Test and write up environment setup on google cloud
-- Run pipeline successfully on google cloud
+- ~~Run pipeline successfully on google cloud~~
 - Develop reporting scripts to compile results for each model
 - Develop reporting scripts to assemble all model results for each run
 - Implement cluster options and configuration to work with SGE in an HPC environment

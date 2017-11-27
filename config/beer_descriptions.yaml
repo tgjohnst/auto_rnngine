@@ -1,0 +1,16 @@
+training:
+    data_name: 'beer_descriptions'
+    data_file: 'data/source/beer/open-beer-database/beer_descriptions.txt'
+    hidden_sizes:
+        - 128
+        - 256
+        - 384
+        - 512
+    num_layers:
+        - 2
+        - 3
+    num_epochs: 15
+
+sampling:
+    out_length: 350
+    num_samples: 3

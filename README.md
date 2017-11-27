@@ -8,9 +8,9 @@ I recommend doing this on AWS EC2 or Google Compute Cloud if you don't have your
 
 As of 11/26/17:
 
-EC2 g2.2xlarge range between 0.25 and 0.80 USD per hour, giving you access to 1 K520 GRID GPU with 4GB GPU memory. This is quite a bit slower than google's offering, but the AWS deep learning AMI does make things easier for beginners as everything is preinstalled and configured.
+EC2 g2.2xlarge range between 0.25 and 0.80 USD per hour (0.65 in us-west_2), giving you access to 1 K520 GRID GPU with 4GB GPU memory. The AWS deep learning AMI does make things easier for beginners as everything is preinstalled and configured.
 
-Google Compute just lowered GPU prices, they charge $0.45 for each K80 GPU attached to an instance. K80s have about 2x the compute cores (2,496) and 2x the memory (12GB) as the K520 GRID used on AWS. Cost/performance-wise, it's pretty much a no-brainer to use google if you're willing to do a bit more setup.
+Google Compute just lowered GPU prices, they charge $0.45 for each K80 GPU attached to an instance. K80s have about 2x the compute cores (2,496) and 3x the memory (12GB) as the K520 GRID resources available on an AWS g2.2xlarge. Cost/performance-wise, it's pretty much a no-brainer to use google if you're willing to do a bit more setup.
 
 *If you are computing on the cloud, remember to stop your instances when you're not working with them or you'll rack up costs.*
 

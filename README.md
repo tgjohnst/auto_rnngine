@@ -22,7 +22,7 @@ Google Compute just lowered GPU prices, they charge $0.45 for each K80 GPU attac
 - fix your conda activate/deactivate scripts (mimicking https://github.com/conda/conda/pull/5407 , until 4.4.0 comes out
 
 ## Google Compute (these instructions apply for most other unix environments as well):
-Coming soon
+See the included documentation (hopefully pretty beginner-friendly) here https://github.com/tgjohnst/auto_rnngine/blob/master/etc/cloud_setup.md
 
 
 # Once you've set up the environment:

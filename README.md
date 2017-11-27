@@ -32,7 +32,7 @@ Coming soon
 
 This is a personal project at the moment, documentation will be updated once it is in working condition, but please let me know if you have any ideas or needs!
 
-#Status:
+# Status:
 - ~~Snakemake pipeline framework complete with standard YAML format~~
 - ~~Training runs successfully on EC2~~
 - ~~Sampling runs successfully on EC2~~
@@ -42,7 +42,7 @@ This is a personal project at the moment, documentation will be updated once it 
 - Develop reporting scripts to assemble all model results for each run
 - Implement cluster options and configuration to work with SGE in an HPC environment
 
-#Datasets:
+# Datasets:
 - Tiny shakespeare
 - Hearthstone card names
 - Soccer player names

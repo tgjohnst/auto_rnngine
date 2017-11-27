@@ -1,4 +1,5 @@
-# auto_rnngine
+# Auto_RNNGine - Automatic RNN training and sampling engine for text synthesis
+Author: Timothy Johnstone, 2017
 Snakemake-driven pipeline for creating generative text models with tensorflow-char-rnn. Produces nice reports comparing models with various parameters.
 
 # Recommended environment setup (more detailed instructions and non-EC2 instructions to come)

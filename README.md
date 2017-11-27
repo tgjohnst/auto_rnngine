@@ -32,6 +32,9 @@ Coming soon
 - run the pipeline with ./run_pipeline.sh config/config_file.yaml
 - enjoy your robo-babble
 
+## Monitoring the pipeline
+TODO - readme about monitoring the pipeline using the included logs as well as tensorboard
+
 This is a personal project at the moment, documentation will be updated once it is in working condition, but please let me know if you have any ideas or needs!
 
 # Status:

@@ -37,7 +37,7 @@ TODO - readme about monitoring the pipeline using the included logs as well as t
 
 This is a personal project at the moment, documentation will be updated once it is in working condition, but please let me know if you have any ideas or needs!
 
-# Status:
+# Status/TODOs:
 - ~~Snakemake pipeline framework complete with standard YAML format~~
 - ~~Training runs successfully on EC2~~
 - ~~Sampling runs successfully on EC2~~
@@ -46,6 +46,7 @@ This is a personal project at the moment, documentation will be updated once it 
 - ~~Run pipeline successfully on google cloud~~
 - Develop reporting scripts to compile results for each model
 - Develop reporting scripts to assemble all model results for each run
+- Add a rule at the end of each run to archive models to shared storage (bucket somewhere)
 - Implement cluster options and configuration to work with SGE in an HPC environment
 
 # Datasets:

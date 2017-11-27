@@ -43,7 +43,7 @@ This is a personal project at the moment, documentation will be updated once it 
 - ~~Sampling runs successfully on EC2~~
 - Enable restarting half-finished trainings during training rule if previous run is detected (sentinel)
 - Test and write up environment setup on google cloud
-- Run pipeline successfully on google cloud
+- ~~Run pipeline successfully on google cloud~~
 - Develop reporting scripts to compile results for each model
 - Develop reporting scripts to assemble all model results for each run
 - Implement cluster options and configuration to work with SGE in an HPC environment

@@ -36,6 +36,7 @@ This is a personal project at the moment, documentation will be updated once it 
 - ~~Snakemake pipeline framework complete with standard YAML format~~
 - ~~Training runs successfully on EC2~~
 - ~~Sampling runs successfully on EC2~~
+- Enable restarting half-finished trainings during training rule if previous run is detected (sentinel)
 - Test and write up environment setup on google cloud
 - Run pipeline successfully on google cloud
 - Develop reporting scripts to compile results for each model

@@ -1,4 +1,3 @@
 .snakemake*
 /models/
-/tensorflow-char-rnn/
 /log/

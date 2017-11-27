@@ -54,7 +54,8 @@ rule sample_text:
             shell('echo "STARTING TEXT: {start_text}\n{sep}" >> {output.sample_txt}')
             for samp_num in range(params.num_samples):
                 shell('echo "SAMPLE {samp_num} {start_text}" >> {output.sample_txt}')
-                shell(('{VENV2} python tensorflow-char-rnn/sample.py '
+                shell(('{VENV2} PYTHONIOENCODING=UTF-8 '
+                ' python tensorflow-char-rnn/sample.py '
                 '--init-dir {params.model_dir} '
                 '--temperature {wildcards.temperature} '
                 '--length {params.out_length} '

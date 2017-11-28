@@ -50,7 +50,10 @@ This is a personal project at the moment, documentation will be updated once it 
 - Implement cluster options and configuration to work with SGE in an HPC environment
 
 # Datasets:
-- Tiny shakespeare
-- Hearthstone card names
-- Soccer player names
-- Beer names (OBDB)
+- ~~Tiny shakespeare~~
+- ~~Hearthstone card names~~
+- Soccer player names (SoccerWiki)
+- ~~Beer names (OBDB)~~
+- ~~Beer descriptions (OBDB)~~
+- Inspirational quotes
+

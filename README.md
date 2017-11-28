@@ -44,6 +44,7 @@ This is a personal project at the moment, documentation will be updated once it 
 - Enable restarting half-finished trainings during training rule if previous run is detected (add completion sentinel)
 - ~~Test and write up environment setup on google cloud~~
 - ~~Run pipeline successfully on google cloud~~
+- Allow for multiple model types to be tested in a single run
 - Develop reporting scripts to compile results for each model
 - Develop reporting scripts to assemble all model results for each run
 - Add a rule at the end of each run to archive models to shared storage (bucket somewhere)

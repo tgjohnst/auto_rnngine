@@ -1,0 +1,15 @@
+training:
+    data_name: 'potter_fullseries'
+    data_file: 'data/potter_fullseries.txt'
+    hidden_sizes:
+        - 256
+        - 512
+    num_layers:
+        - 2
+        - 3
+    num_epochs: 20
+
+sampling:
+    out_length: 350
+    num_samples: 3
+

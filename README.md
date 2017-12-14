@@ -59,4 +59,6 @@ This is a personal project at the moment, documentation will be updated once it 
 - Inspirational quotes
 - Christmas songs
 - Corporate slogans
+- ~~harry potter~~
+- ~~lotr~~
 

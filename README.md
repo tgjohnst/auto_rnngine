@@ -3,6 +3,8 @@ Author: Timothy Johnstone, 2017
 
 Snakemake-driven pipeline for creating generative text models with tensorflow-char-rnn. Produces nice reports comparing models with various parameters.
 
+(TODO: include some samples of what this can do here)
+
 # Recommended environment setup (more detailed instructions and non-EC2 instructions to come)
 I recommend doing this on AWS EC2 or Google Compute Cloud if you don't have your own box with a beefy, CUDA-enabled GPU with plenty of memory. GPUs speed up training a lot, especially if you have a lot of hidden states.
 

@@ -63,4 +63,5 @@ This is a personal project at the moment, documentation will be updated once it 
 - Corporate slogans
 - ~~harry potter~~
 - ~~lotr~~
+- Hitchhiker's guide
 

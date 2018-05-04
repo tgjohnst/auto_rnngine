@@ -4,3 +4,6 @@
 [submodule "data/source/beer/open-beer-database/open-beer-database-dumps"]
 	path = data/source/beer/open-beer-database/open-beer-database-dumps
 	url = https://github.com/brewdega/open-beer-database-dumps
+[submodule "data/source/dnd/DnD-characters"]
+	path = data/source/dnd/DnD-characters
+	url = https://github.com/janelleshane/DnD-characters

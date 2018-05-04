@@ -1,0 +1,15 @@
+training:
+    data_name: 'dnd_characters'
+    data_file: 'data/dnd_chars.txt'
+    hidden_sizes:
+        - 256
+        - 512
+    num_layers:
+        - 2
+        - 3
+    num_epochs: 30
+
+sampling:
+    out_length: 350
+    num_samples: 5
+

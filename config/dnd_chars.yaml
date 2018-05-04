@@ -6,8 +6,8 @@ training:
         - 512
     num_layers:
         - 2
-        - 3
-    num_epochs: 30
+#        - 3
+    num_epochs: 10
 
 sampling:
     out_length: 350

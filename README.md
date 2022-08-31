@@ -1,6 +1,8 @@
 # Auto_RNNgine - Automatic RNN training and sampling engine for text synthesis
 Author: Timothy Johnstone, 2017
 
+## Development never completed and has been paused indefinitely. Plenty of similar tools (e.g. Gradio) now exist that accomplish this in a much more elegant way. It was a great exercise, though.
+
 Snakemake-driven pipeline for creating generative text models with tensorflow-char-rnn. Produces nice reports comparing models with various parameters.
 
 (TODO: include some samples of what this can do here)
